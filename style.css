@@ -1,0 +1,303 @@
+:root {
+    --bg-primary: #121214;
+    --bg-secondary: #202024;
+    --bg-cards-primary: #29292e;
+
+    --text-main: #e1e1e6;
+    --text-muted: #8d8d99;
+
+    --color-income: #00b37e;
+    --color-income-dark: #015f43;
+
+    --color-expense: #f75a68;
+    --color-expense-dark: #aa2834;
+
+    --color-balance: #4ea8de;
+    --color-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: var(--bg-primary);
+    font-family: 'Lato';
+    -webkit-font-smoothing: antialiased;
+}
+
+.navbar {
+    background-color: var(--bg-secondary);
+    margin: 0 auto;
+    width: 100%;
+    max-width: auto;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo span {
+    color: var(--color-balance);
+}
+
+.home svg {
+    color: var(--color-white);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; 
+}
+
+.home:hover svg {
+    transform: scale(1.2);
+    color: var(--color-balance); 
+}
+
+.summary {
+    background-color: transparent;
+    width: 100%;
+}
+
+.summary-items {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    background-color: transparent;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.entry-item,
+.outflows-item,
+.balance-item {
+    flex: 1;
+    background-color: var(--bg-cards-primary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.entry-item svg {
+    fill: var(--color-income);
+}
+
+.outflows-item svg {
+    fill: var(--color-expense);
+}
+
+.balance-item svg {
+    fill: var(--color-balance);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.finance-form {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.form-container input,
+.form-container select {
+    flex: 1;
+    background-color: var(--bg-cards-primary);
+    border: none;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-container input::placeholder{
+    color: var(--text-muted);
+}
+
+#add-btn {
+    background-color: var(--color-income);
+    color: var(--color-white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#add-btn:hover {
+    background-color: var(--color-income-dark);
+}
+
+#type:has(option[value="expense"]:checked) ~ #add-btn {
+    background-color: var(--color-expense);
+}
+
+#type:has(option[value="expense"]:checked) ~ #add-btn:hover {
+    background-color: var(--color-expense-dark);
+}
+
+.transactions {
+    width: 100%;
+    margin-top: 2.5rem;
+}
+
+.transactions-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.transactions-container h2 {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.transaction-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.transaction-item {
+    background-color: var(--bg-cards-primary);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.35rem;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.transaction-item:hover {
+    transform: translateX(4px);
+}
+
+.transaction-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+}
+
+.transaction-item .title {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.transaction-item .value {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.transaction-item.income .value {
+    color: var(--color-income);
+}
+
+.transaction-item.expense .value {
+    color: var(--color-expense);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.3;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.transaction-item:hover .delete-btn {
+    opacity: 0.7;
+}
+
+.delete-btn:hover {
+    opacity: 1 !important;
+    transform: scale(1.2);
+}
+
+.transaction-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 320px;  
+    overflow-y: auto;   
+    padding-right: 0.25rem;
+}
+
+.transaction-list::-webkit-scrollbar {
+    width: 6px;
+}
+.transaction-list::-webkit-scrollbar-thumb {
+    background-color: var(--bg-cards-primary);
+    border-radius: 4px;
+}
+
+.main-footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+    background-color: var(--bg-primary);
+}
+
+.main-footer p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
